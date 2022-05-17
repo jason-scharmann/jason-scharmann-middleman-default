@@ -1,0 +1,16 @@
+{
+  "source/*.erb": {
+    "type": "html",
+    "template": [
+      "<%# source/{basename}.erb %>",
+      "",
+      "<h1>Welcome to the <%= File.basename(\"{basename|capitalize}\", \".html\") %> Page!</h1>"
+    ]
+  },
+  "source/stylesheets/*.scss": {
+    "type": "css"
+  },
+  "helpers/*.rb": {
+    "type": "helper"
+  }
+}
