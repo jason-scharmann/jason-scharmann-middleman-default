@@ -146,7 +146,7 @@ the reset file, respectively.
 For information on data files and how they can be used in templates and dynamic
 routes see the [documentation on Middleman datafiles](https://middlemanapp.com/advanced/data-files/).
 
-### Pretty URLs (Directory Indexes)
+## Pretty URLs (Directory Indexes)
 
 Setup with a one liner in `config.rb`:
 
