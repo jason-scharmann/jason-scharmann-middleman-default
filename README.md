@@ -112,7 +112,7 @@ page_title("About") # => "About • Document"
 <title><%= page_title(current_page.data.title) %></title>
 ```
 
-### SMACSS
+## SMACSS
 
 ```
 stylesheets
@@ -141,7 +141,7 @@ The only two things added here are:
 Please check out these resources for why I have set up the file structure and
 the reset file, respectively.
 
-### Data Directory
+## Data Directory
 
 For information on data files and how they can be used in templates and dynamic
 routes see the [documentation on Middleman datafiles](https://middlemanapp.com/advanced/data-files/).
