@@ -5,7 +5,9 @@ module Fonts
     class << self
 
       def get_fonts(fonts)
-        if fonts.is_a?(String)
+        if fonts.is_a?(Object)
+          str = fontify_object(fonts)
+        elsif fonts.is_a?(String)
           str = fontify(fonts)
         elsif fonts.is_a?(Array)
           str = fontify_array(fonts).join("&family=")
@@ -57,8 +59,13 @@ module Fonts
         end.join("&family=")
       end
 
-
-
+      def fontify_object(obj)
+        obj.fonts.map do | element |
+          name = fontify(element[:name])
+          weight_string = make_weight_string(element[:weights])
+          name + ":ital,wght@" + weight_string
+        end.join("&family=")
+      end
     end
   end
 
