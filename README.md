@@ -8,7 +8,7 @@ This is my default [Middleman](https://middlemanapp.com/) project template.
 type:
 
 ``` sh
-$ middleman init <your-project-name> -T jason-scharmann/jason-scharmann-middleman-default
+$ middleman init <your-project-name> -T jason-scharmann/js-middleman-default
 ```
 See Middleman's documentation on [project templates](https://middlemanapp.com/advanced/project-templates/)
 for more information on the use on the `-T` flag.
