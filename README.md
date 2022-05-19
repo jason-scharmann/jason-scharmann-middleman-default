@@ -22,7 +22,7 @@ default
 ├── Gemfile
 ├── Gemfile.lock
 ├── helpers
-│   ├── google_fonts.rb
+│   ├── fonts.rb
 │   └── page_title.rb
 └── source
     ├── images
@@ -65,33 +65,44 @@ to configure and code the project:
 
 ```
 helpers/
-├── google_fonts.rb
+├── fonts.rb
 └── page_title.rb
 ```
 
 ### GoogleFonts
 
-The `google_fonts(str|arr) => str` helper takes in a string or list of strings
-and outputs an html string used in the layout head. Improvements needed:
-
-- a way to take weight arguments
+The `GoogleFonts.get_fonts(str|arr|hash) => str` helper takes in a string, list
+of strings, or a hash with name and weight keys that take both normal and italic
+font faces in arrays, and outputs an html string used in the layout head.
 
 Examples used interactively:
 
 ``` ruby
-use GoogleFonts
+# irb -r "./helpers/fonts.rb"
+use Fonts
 
-google_fonts('Work+Sans')
-# => "<link href='https://fonts.googleapis.com/css2?family=Work+Sans&display=swap' rel='stylesheet'>"
+GoogleFonts.get_fonts('Work Sans')
+# => "<link rel='preconnect' href='https://fonts.googleapis.com'/>\n<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />\n<link href='https://fonts.googleapis.com/css2?family=Work+Sans&display=swap' rel='stylesheet' />"
 
-google_fonts(['Work+Sans', 'Montserrat'])
-# => "<link href='https://fonts.googleapis.com/css2?family=Work+Sans&family=Montserrat&display=swap' rel='stylesheet'>"
+GoogleFonts.get_fonts(['Work Sans', 'Montserrat'])
+# => "<link rel='preconnect' href='https://fonts.googleapis.com'/>\n<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />\n<link href='https://fonts.googleapis.com/css2?family=Work+Sans&family=Montserrat&display=swap' rel='stylesheet' />"
+
+GoogleFonts.get_fonts(
+  {one: {name: "Work Sans", weights: {normal: ["300"], italic: ["300"]}},
+   two: {name: "Montserrat", weights: {normal: ["500"], italic: ["400"]}}})
+# => "<link rel='preconnect' href='https://fonts.googleapis.com'/>\n<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />\n<link href='https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;1,300&family=Montserrat:ital,wght@0,500;1,400&display=swap' rel='stylesheet' />"
 ```
 
-Example in `layouts/layout.erb`:
+Examples that would be used in `layouts/layout.erb`:
 
 ``` eruby
-<%= google_fonts("Work+Sans") %>
+<%= GoogleFonts.get_fonts("Work Sans") %>
+<%# OR %>
+<%= GoogleFonts.get_fonts(['Work Sans', 'Montserrat']) %>
+<%# OR %>
+<%= GoogleFonts.get_fonts(
+  {one: {name: "Work Sans", weights: {normal: ["300"], italic: ["300"]}},
+   two: {name: "Montserrat", weights: {normal: ["500"], italic: ["400"]}}}) %>
 ```
 
 ### PageTitle

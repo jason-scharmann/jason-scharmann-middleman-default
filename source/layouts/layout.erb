@@ -1,9 +1,8 @@
-<%# source/layouts/layout.erb %>
 <!doctype html>
 <html>
   <head>
     <%= partial "layouts/meta_tags" %>
-    <%# <%= google_fonts('Work+Sans') %1> %>
+    <%# <%= GoogleFonts.get_fonts({one: {name: "Roboto", weights: {normal: ["400"]}}}) %1> %>
     <title><%= page_title(current_page.data.title) %></title>
     <%= stylesheet_link_tag "site" %>
   </head>
