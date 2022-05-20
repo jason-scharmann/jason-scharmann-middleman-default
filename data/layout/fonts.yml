@@ -2,3 +2,5 @@
   weights:
     normal:
       - "400"
+    italic:
+      - "400"
